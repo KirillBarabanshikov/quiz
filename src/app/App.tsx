@@ -1,9 +1,10 @@
-import { Button } from '@/shared/ui';
+import { Layout } from '@/shared/ui';
+import { QuizArea } from '@/widgets';
 
 export const App = () => {
   return (
-    <div>
-      <Button text={'Начать'} theme={'white'} />
-    </div>
+    <Layout>
+      <QuizArea />
+    </Layout>
   );
 };

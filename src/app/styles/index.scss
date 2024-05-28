@@ -4,6 +4,12 @@
   border: 0;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body,
 html,
 #root {
