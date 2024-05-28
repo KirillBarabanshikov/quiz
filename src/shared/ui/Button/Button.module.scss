@@ -1,0 +1,44 @@
+.button {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: uppercase;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    cursor: unset;
+  }
+
+  &.blue {
+    color: #ffffff;
+    background: #5c59fd;
+    border-radius: 20px;
+    padding: 50px;
+
+    &:active {
+      background: #4845e9;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+    }
+  }
+
+  &.white {
+    color: #0d003b;
+    background: #ffffff;
+    border-radius: 9px;
+    padding: 20px;
+
+    &:active {
+      background: #f0f2f5;
+    }
+
+    &:disabled {
+      color: #98a2b3;
+    }
+  }
+}

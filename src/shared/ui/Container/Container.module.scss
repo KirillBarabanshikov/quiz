@@ -1,0 +1,19 @@
+.container {
+  border-radius: 20px;
+
+  &.blue {
+    background: #5c59fd;
+  }
+
+  &.white {
+    background: #ffffff;
+  }
+
+  &.gradient {
+    background: linear-gradient(180deg, #81c8f2 0%, #5c59fd 100%);
+  }
+
+  &.lightblue {
+    background: #ecf7ff;
+  }
+}
