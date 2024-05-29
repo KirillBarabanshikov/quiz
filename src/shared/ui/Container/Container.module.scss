@@ -1,5 +1,16 @@
 .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 20px;
+
+  &.row {
+    flex-direction: row;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
 
   &.blue {
     background: #5c59fd;

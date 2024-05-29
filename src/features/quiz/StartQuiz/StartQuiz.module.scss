@@ -1,0 +1,75 @@
+.container {
+  display: grid;
+  grid-template: 134px 1fr / 1fr 1fr;
+  gap: 2px;
+  height: 100%;
+
+  .head {
+    justify-content: space-between;
+    padding: 19px 20px;
+    grid-column: 1 / 3;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      span {
+        font-size: 19px;
+        font-weight: 700;
+        line-height: 110%;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .quiz {
+    padding: 45px;
+
+    h1 {
+      font-size: 60px;
+      line-height: 100%;
+      font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+  }
+
+  .info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 2px;
+
+    .ship {
+      flex: 1;
+    }
+
+    .adventure {
+      display: flex;
+      gap: 2px;
+      flex: 1;
+
+      .item {
+        width: 50%;
+
+        .box {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          height: 192px;
+
+          span {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 100%;
+            text-align: center;
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
+}
