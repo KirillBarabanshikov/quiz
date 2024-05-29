@@ -24,7 +24,8 @@
       }
     }
 
-    &.question {
+    &.question,
+    &.result {
       p {
         font-size: 20px;
         line-height: 110%;
@@ -35,6 +36,18 @@
         font-size: 80px;
         text-align: center;
         white-space: pre;
+      }
+    }
+
+    &.result {
+      img {
+        max-width: 400px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        margin-top: 20px;
+        margin-bottom: unset;
       }
     }
 

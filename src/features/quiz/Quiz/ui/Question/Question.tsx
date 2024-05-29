@@ -4,6 +4,7 @@ import { Button, Container } from '@/shared/ui';
 import { useQuizStore } from '@/features/quiz/Quiz/store/store.ts';
 import { OptionButton } from '@/features/quiz/Quiz/ui/OptionButton/OptionButton.tsx';
 import styles from '../../Quiz.module.scss';
+import { TourResult } from '@/features/quiz/Quiz/ui';
 
 interface IQuestion {
   question: InterfaceQuestion;
@@ -12,7 +13,8 @@ interface IQuestion {
 
 export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-  const { currentQuestion, setQuestion, setTour, currentTour } = useQuizStore();
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const { currentQuestion, setQuestion, currentTour } = useQuizStore();
 
   useEffect(() => {
     setSelectedOptions([]);
@@ -20,15 +22,11 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
 
   function onSelect(option: string) {
     setSelectedOptions((prevState) => [...prevState, option]);
+    question.answer.includes(option) && setCorrectAnswers((prevState) => prevState + 1);
   }
 
   if (currentQuestion > questionsCount - 1) {
-    return (
-      <div>
-        result
-        <Button text={'Продолжить квиз'} onClick={() => setTour(currentTour + 1)} />
-      </div>
-    );
+    return <TourResult questionsCount={questionsCount} correctAnswers={correctAnswers} />;
   }
 
   return (
