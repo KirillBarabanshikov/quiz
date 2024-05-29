@@ -1,8 +1,7 @@
-import { Quiz, StartQuiz } from '@/features/quiz';
-import { useState } from 'react';
+import { Quiz, StartQuiz, useQuizStore } from '@/features/quiz';
 
 export const QuizArea = () => {
-  const [isStarted, setIsStarted] = useState(false);
+  const { isStarted, start } = useQuizStore();
 
-  return <div>{isStarted ? <Quiz /> : <StartQuiz onStart={() => setIsStarted(true)} />}</div>;
+  return <>{isStarted ? <Quiz /> : <StartQuiz onStart={start} />}</>;
 };

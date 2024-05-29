@@ -1,2 +1,2 @@
 export { StartQuiz } from './StartQuiz/StartQuiz.tsx';
-export { Quiz } from './Quiz/Quiz.tsx';
+export { Quiz, useQuizStore } from './Quiz';
