@@ -17,8 +17,11 @@ export const OptionButton: FC<IOptionButton> = ({
   disabled = false,
 }) => {
   return (
-    <button onClick={onClick} className={`${styles.button} ${styles[variant]}`} disabled={disabled}>
-      {number} {option}
-    </button>
+    <div className={`${styles.wrap} ${styles[variant]} ${disabled ? styles.disabled : ''}`}>
+      <span>{number}</span>
+      <button onClick={onClick} className={`${styles.button}`} disabled={disabled}>
+        {option}
+      </button>
+    </div>
   );
 };

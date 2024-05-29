@@ -1,0 +1,66 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 100%;
+
+  .container {
+    height: 100%;
+    position: relative;
+
+    &.tour {
+      background-image: url('@/shared/assets/images/map.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+
+      p {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 100px;
+      }
+    }
+
+    &.question {
+      p {
+        font-size: 20px;
+        line-height: 110%;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 80px;
+        text-align: center;
+        white-space: pre;
+      }
+    }
+
+    p {
+      color: #5c59fd;
+    }
+
+    h2 {
+      color: #0d003b;
+    }
+
+    .badge {
+      font-size: 24px;
+      color: #0d003b;
+      background: #ffffff;
+      padding: 15px 36px;
+      border-radius: 100px;
+
+      position: absolute;
+      top: 30px;
+      left: 30px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 2px;
+  }
+}

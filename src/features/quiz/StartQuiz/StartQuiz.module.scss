@@ -18,28 +18,26 @@
         font-size: 19px;
         font-weight: 700;
         line-height: 110%;
-        color: #ffffff;
+        letter-spacing: -0.4px;
       }
     }
   }
 
   .quiz {
-    padding: 45px;
+    padding: 72px;
 
     h1 {
       font-size: 60px;
-      line-height: 100%;
-      font-weight: 600;
-      color: #ffffff;
       text-align: center;
       margin-bottom: 40px;
+      max-width: 766px;
     }
   }
 
   .info {
     display: flex;
-    flex: 1;
     flex-direction: column;
+    flex: 1;
     gap: 2px;
 
     .ship {
@@ -48,8 +46,8 @@
 
     .adventure {
       display: flex;
-      gap: 2px;
       flex: 1;
+      gap: 2px;
 
       .item {
         width: 50%;
@@ -61,10 +59,7 @@
           height: 192px;
 
           span {
-            color: #ffffff;
             font-size: 24px;
-            font-weight: 600;
-            line-height: 100%;
             text-align: center;
             margin-top: 20px;
           }

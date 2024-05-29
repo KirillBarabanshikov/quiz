@@ -4,6 +4,9 @@
   line-height: 20px;
   text-transform: uppercase;
   width: 100%;
+  transition:
+    background-color 0.25s,
+    opacity 0.25s;
 
   &:hover {
     cursor: pointer;

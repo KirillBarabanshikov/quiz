@@ -18,10 +18,23 @@ html,
 
 body {
   font-family: 'Inter Variable', sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.2px;
   background: #0d003b;
+  color: #ffffff;
 }
 
 input,
 button {
   font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
 }

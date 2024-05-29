@@ -1,8 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 import { IQuestion as InterfaceQuestion } from '../../types/types.ts';
-import { Button } from '@/shared/ui';
+import { Button, Container } from '@/shared/ui';
 import { useQuizStore } from '@/features/quiz/Quiz/store/store.ts';
 import { OptionButton } from '@/features/quiz/Quiz/ui/OptionButton/OptionButton.tsx';
+import styles from '../../Quiz.module.scss';
 
 interface IQuestion {
   question: InterfaceQuestion;
@@ -31,9 +32,13 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
   }
 
   return (
-    <div>
-      <div style={{ color: 'white' }}>{question.question}</div>
-      <div>
+    <div className={styles.wrapper}>
+      <Container className={`${styles.container} ${styles.question}`}>
+        <span className={styles.badge}>{currentTour + 1} тур</span>
+        <p>ВОПРОС {`${currentQuestion + 1} / ${questionsCount}`}</p>
+        <h2>{question.question}</h2>
+      </Container>
+      <div className={styles.actions}>
         {question.options.map((option, index) => (
           <OptionButton
             key={option}
@@ -51,7 +56,8 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
           />
         ))}
       </div>
-      <div>
+      <div className={styles.actions}>
+        <Button text={'На главную'} />
         <Button
           text={'Далее'}
           onClick={() => setQuestion(currentQuestion + 1)}

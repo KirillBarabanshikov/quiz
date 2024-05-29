@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import { ITour as InterfaceTour } from '../../types/types.ts';
-import { Button } from '@/shared/ui';
 import { Question } from '../Question/Question.tsx';
 import { useQuizStore } from '@/features/quiz/Quiz/store/store.ts';
+import { TourPreview } from '@/features/quiz/Quiz/ui';
 
 interface ITour {
   tour: InterfaceTour;
@@ -26,12 +26,5 @@ export const Tour: FC<ITour> = ({ tour }) => {
     );
   }
 
-  return (
-    <div>
-      {tour.name}
-      <div>
-        <Button text={'Начать'} onClick={() => setIsStarted(true)} />
-      </div>
-    </div>
-  );
+  return <TourPreview name={tour.name} onStart={() => setIsStarted(true)} />;
 };
