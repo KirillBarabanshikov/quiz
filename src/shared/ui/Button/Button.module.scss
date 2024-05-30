@@ -6,7 +6,8 @@
   width: 100%;
   transition:
     background-color 0.25s,
-    opacity 0.25s;
+    opacity 0.25s,
+    color 0.25s;
 
   &:hover {
     cursor: pointer;
@@ -17,10 +18,31 @@
   }
 
   &.blue {
-    color: #ffffff;
-    background: #5c59fd;
-    border-radius: 20px;
-    padding: 50px;
+    &.primary {
+      color: #ffffff;
+      background: #5c59fd;
+    }
+
+    &.outline {
+      color: #5c59fd;
+      background: transparent;
+      outline: 1px solid #5c59fd;
+      outline-offset: -1px;
+
+      &:active {
+        color: #ffffff;
+      }
+    }
+
+    &.large {
+      border-radius: 20px;
+      padding: 50px;
+    }
+
+    &.medium {
+      border-radius: 9px;
+      padding: 30px;
+    }
 
     &:active {
       background: #4845e9;

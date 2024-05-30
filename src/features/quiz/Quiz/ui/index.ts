@@ -4,3 +4,4 @@ export { Question } from './Question/Question.tsx';
 export { Tour } from './Tour/Tour.tsx';
 export { TourPreview } from './TourPreview/TourPreview.tsx';
 export { TourResult } from './TourResult/TourResult.tsx';
+export { FinishTrgger } from './FinishTrigger/FinishTrigger.tsx';

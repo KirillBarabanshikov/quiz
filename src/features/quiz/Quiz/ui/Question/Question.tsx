@@ -4,7 +4,7 @@ import { Button, Container } from '@/shared/ui';
 import { useQuizStore } from '@/features/quiz/Quiz/store/store.ts';
 import { OptionButton } from '@/features/quiz/Quiz/ui/OptionButton/OptionButton.tsx';
 import styles from '../../Quiz.module.scss';
-import { TourResult } from '@/features/quiz/Quiz/ui';
+import { FinishTrgger, TourResult } from '@/features/quiz/Quiz/ui';
 import { motion } from 'framer-motion';
 
 interface IQuestion {
@@ -56,7 +56,7 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
         ))}
       </motion.div>
       <div className={styles.actions}>
-        <Button text={'На главную'} />
+        <FinishTrgger />
         <Button
           text={'Далее'}
           onClick={() => setQuestion(currentQuestion + 1)}

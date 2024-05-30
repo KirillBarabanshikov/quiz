@@ -3,6 +3,7 @@ import { Button, Container } from '@/shared/ui';
 import { useQuizStore } from '@/features/quiz';
 import styles from '../../Quiz.module.scss';
 import { motion } from 'framer-motion';
+import { FinishTrgger } from '@/features/quiz/Quiz/ui';
 
 interface ITourPreview {
   name: string;
@@ -10,13 +11,7 @@ interface ITourPreview {
 }
 
 export const TourPreview: FC<ITourPreview> = ({ name, onStart }) => {
-  const { currentTour, finish } = useQuizStore();
-
-  function onFinish() {
-    if (currentTour === 0) {
-      finish();
-    }
-  }
+  const { currentTour } = useQuizStore();
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.wrapper}>
@@ -25,7 +20,7 @@ export const TourPreview: FC<ITourPreview> = ({ name, onStart }) => {
         <h2>{name}</h2>
       </Container>
       <div className={styles.actions}>
-        <Button text={'На главную'} onClick={onFinish} />
+        <FinishTrgger />
         <Button text={'Начать'} onClick={onStart} />
       </div>
     </motion.div>

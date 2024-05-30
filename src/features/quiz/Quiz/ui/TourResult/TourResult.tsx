@@ -5,6 +5,7 @@ import { useQuizStore } from '@/features/quiz';
 import trophy from '@/shared/assets/images/trophy.png';
 import medal from '@/shared/assets/images/medal.png';
 import dislike from '@/shared/assets/images/dislike.png';
+import { FinishTrgger } from '@/features/quiz/Quiz/ui';
 
 const results = [
   { image: trophy, title: 'Вы справились отлично!' },
@@ -40,7 +41,7 @@ export const TourResult: FC<ITourResult> = ({ questionsCount, correctAnswers }) 
         </p>
       </Container>
       <div className={styles.actions}>
-        <Button text={'На главную'} />
+        <FinishTrgger />
         <Button text={'Продолжить квиз'} onClick={() => setTour(currentTour + 1)} />
       </div>
     </div>
