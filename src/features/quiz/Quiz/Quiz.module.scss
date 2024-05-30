@@ -25,7 +25,8 @@
     }
 
     &.question,
-    &.result {
+    &.result,
+    &.finish {
       p {
         font-size: 20px;
         line-height: 110%;
@@ -39,7 +40,8 @@
       }
     }
 
-    &.result {
+    &.result,
+    &.finish {
       .img_area {
         width: 400px;
         height: 400px;
@@ -53,6 +55,13 @@
       p {
         margin-top: 20px;
         margin-bottom: unset;
+      }
+    }
+
+    &.finish {
+      h2 {
+        max-width: 850px;
+        white-space: unset;
       }
     }
 
