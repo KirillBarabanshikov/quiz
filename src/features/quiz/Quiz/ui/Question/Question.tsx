@@ -5,6 +5,7 @@ import { useQuizStore } from '@/features/quiz/Quiz/store/store.ts';
 import { OptionButton } from '@/features/quiz/Quiz/ui/OptionButton/OptionButton.tsx';
 import styles from '../../Quiz.module.scss';
 import { TourResult } from '@/features/quiz/Quiz/ui';
+import { motion } from 'framer-motion';
 
 interface IQuestion {
   question: InterfaceQuestion;
@@ -36,7 +37,7 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
         <p>ВОПРОС {`${currentQuestion + 1} / ${questionsCount}`}</p>
         <h2>{question.question}</h2>
       </Container>
-      <div className={styles.actions}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.actions}>
         {question.options.map((option, index) => (
           <OptionButton
             key={option}
@@ -53,7 +54,7 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
             onClick={() => onSelect(option)}
           />
         ))}
-      </div>
+      </motion.div>
       <div className={styles.actions}>
         <Button text={'На главную'} />
         <Button

@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Button, Container } from '@/shared/ui';
 import { useQuizStore } from '@/features/quiz';
 import styles from '../../Quiz.module.scss';
+import { motion } from 'framer-motion';
 
 interface ITourPreview {
   name: string;
@@ -18,7 +19,7 @@ export const TourPreview: FC<ITourPreview> = ({ name, onStart }) => {
   }
 
   return (
-    <div className={styles.wrapper}>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.wrapper}>
       <Container className={`${styles.container} ${styles.tour}`}>
         <p>{currentTour + 1} тур</p>
         <h2>{name}</h2>
@@ -27,6 +28,6 @@ export const TourPreview: FC<ITourPreview> = ({ name, onStart }) => {
         <Button text={'На главную'} onClick={onFinish} />
         <Button text={'Начать'} onClick={onStart} />
       </div>
-    </div>
+    </motion.div>
   );
 };

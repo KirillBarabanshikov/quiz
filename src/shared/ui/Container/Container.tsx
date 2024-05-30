@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 import styles from './Container.module.scss';
+import { motion } from 'framer-motion';
 
 interface IContainer extends PropsWithChildren {
   theme?: 'blue' | 'white' | 'gradient' | 'lightblue';
@@ -15,8 +16,12 @@ export const Container: FC<IContainer> = ({
   direction = 'column',
 }) => {
   return (
-    <div className={`${className} ${styles.container} ${styles[theme]} ${styles[direction]}`}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className={`${className} ${styles.container} ${styles[theme]} ${styles[direction]}`}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 };

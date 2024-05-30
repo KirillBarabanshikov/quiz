@@ -31,7 +31,9 @@ export const TourResult: FC<ITourResult> = ({ questionsCount, correctAnswers }) 
     <div className={styles.wrapper}>
       <Container className={`${styles.container} ${styles.result}`}>
         <span className={styles.badge}>{currentTour + 1} тур</span>
-        <img src={results[result].image} />
+        <div className={styles.img_area}>
+          <img src={results[result].image} />
+        </div>
         <h2>{results[result].title}</h2>
         <p>
           Вы ответили правильно на {correctAnswers} / {questionsCount} вопросов
