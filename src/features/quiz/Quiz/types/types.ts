@@ -6,7 +6,7 @@ export interface ITour {
 export interface IQuestion {
   question: string;
   image?: string;
-  options?: string[];
+  options: string[];
   answer: string[];
   description?: IDescription;
   type: QuestionType;

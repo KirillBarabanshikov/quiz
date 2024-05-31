@@ -36,7 +36,11 @@ export const StartQuiz: FC<IStartQuiz> = ({ onStart }) => {
           <Container className={styles.item} theme={'blue'}>
             <div className={styles.box}>
               <Compass />
-              <span>7 захватывающих этапов</span>
+              <span>
+                7 захватывающих
+                <br />
+                этапов
+              </span>
             </div>
           </Container>
           <Container className={styles.item} theme={'blue'}>

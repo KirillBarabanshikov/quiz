@@ -45,9 +45,8 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
     if (question.type === 'blank') {
       return setShowModal(true);
     }
-
     if (currentQuestion === questionsCount - 1) {
-      if (currentTour === 3) {
+      if (currentTour === 3 || currentTour === 6) {
         setTour(currentTour + 1);
       } else {
         setShowResult(true);
@@ -55,7 +54,11 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
     } else {
       setQuestion(currentQuestion + 1);
     }
+
+    console.log(currentTour, currentQuestion);
   }
+
+  if (!question) return <></>;
 
   if (showResult) {
     if (currentTour === 2) {
@@ -68,8 +71,6 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
 
     return <TourResult questionsCount={questionsCount} correctAnswers={correctAnswers} />;
   }
-
-  if (!question) return <></>;
 
   return (
     <div className={styles.wrapper}>
@@ -94,7 +95,7 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
         <div className={styles.row}>
           <Container className={`${styles.container} ${styles.left}`}>
             <span className={styles.badge}>{currentTour + 1} тур</span>
-            <p>Собери Розу Ветров</p>
+            <p>{currentTour === 3 ? 'Собери Розу Ветров' : 'Снаряди капитана Чирикова'}</p>
             <h2>{question.question}</h2>
           </Container>
           <Container theme={'white'} className={styles.right}>
@@ -102,14 +103,19 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
           </Container>
         </div>
       )}
-      {question.options && (
+      {question.options.length > 0 && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className={`${styles.actions} ${styles.options}`}
         >
-          {question.options.slice(0, 18).map((option, index) => {
+          {question.options.map((option, index) => {
             if (question.type === 'multiple') {
+              const currentSmall =
+                currentTour === 4 && currentQuestion === 2 && index <= 4 ? styles.small : '';
+              const currentLarge =
+                currentTour === 4 && currentQuestion === 2 && index > 4 ? styles.large : '';
+
               return (
                 <OptionButton
                   key={index}
@@ -123,8 +129,9 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
                         : 'error'
                       : 'default'
                   }
-                  className={styles.option}
+                  className={`${currentTour === 4 ? styles.option : ''} ${currentSmall} ${currentLarge}`}
                   onClick={() => onSelect(option)}
+                  disabled={selectedOptions.includes(option)}
                 />
               );
             }
@@ -144,6 +151,7 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
                 option={option}
                 number={index + 1}
                 onClick={() => onSelect(option)}
+                className={styles.optionRose}
               />
             );
           })}
@@ -161,7 +169,11 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
         isOpen={showModal}
         onClose={() => {
           setShowModal(false);
-          setQuestion(currentQuestion + 1);
+          if (currentQuestion >= questionsCount - 1) {
+            setTour(currentTour + 1);
+          } else {
+            setQuestion(currentQuestion + 1);
+          }
         }}
         className={styles.modal}
       >

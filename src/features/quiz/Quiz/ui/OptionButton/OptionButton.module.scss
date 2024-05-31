@@ -1,6 +1,6 @@
 .wrap {
   position: relative;
-  flex: 1 0 21%;
+  flex: 1 0 19%;
   height: 120px;
 
   span {
@@ -39,6 +39,7 @@
     width: 100%;
     border-radius: 20px;
     height: 100%;
+    white-space: pre;
     transition:
       color 0.25s,
       background-color 0.25s,

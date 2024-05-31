@@ -120,6 +120,7 @@
       h2 {
         font-size: 60px;
         text-align: center;
+        white-space: pre;
       }
     }
 
@@ -159,8 +160,21 @@
 
   .options {
     flex-wrap: wrap;
+
+    .optionRose {
+      flex: 1 0 21%;
+    }
+
     .option {
       flex: 1 0 15%;
+
+      &.small {
+        flex: 1 0 19%;
+      }
+
+      &.large {
+        flex: 1 0 20%;
+      }
     }
   }
 }
