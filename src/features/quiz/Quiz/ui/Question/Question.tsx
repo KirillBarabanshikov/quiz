@@ -54,8 +54,6 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
     } else {
       setQuestion(currentQuestion + 1);
     }
-
-    console.log(currentTour, currentQuestion);
   }
 
   if (!question) return <></>;
