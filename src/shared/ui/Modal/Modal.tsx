@@ -6,9 +6,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 interface IModal extends PropsWithChildren {
   isOpen: boolean;
   onClose: () => void;
+  className?: string;
 }
 
-export const Modal: FC<IModal> = ({ children, isOpen, onClose }) => {
+export const Modal: FC<IModal> = ({ children, isOpen, onClose, className }) => {
   return createPortal(
     <AnimatePresence>
       {isOpen && (
@@ -22,7 +23,7 @@ export const Modal: FC<IModal> = ({ children, isOpen, onClose }) => {
           <motion.div
             initial={{ y: -50 }}
             animate={{ y: 0 }}
-            className={styles.modal}
+            className={`${className} ${styles.modal}`}
             onClick={(e) => e.stopPropagation()}
           >
             {children}

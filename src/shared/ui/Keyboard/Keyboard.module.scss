@@ -1,0 +1,54 @@
+.keyboard {
+  position: fixed;
+  bottom: 50px;
+  left: calc(50% - 1014px / 2);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #ffffff;
+  padding: 27.81px 30.12px 37.07px;
+  border-radius: 17.39px;
+
+  .row {
+    display: flex;
+    gap: 10px;
+
+    &:nth-child(2) {
+      justify-content: flex-end;
+    }
+
+    &:nth-child(4) {
+      justify-content: center;
+    }
+  }
+
+  button {
+    font-size: 17px;
+    background: #f1f3f3;
+    border-radius: 17.39px;
+    width: 60.24px;
+    height: 55.61px;
+
+    &.Backspace {
+      font-size: 0;
+      background-image: url('@/shared/assets/icons/backspace.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &.Enter {
+      width: 143.06px;
+    }
+
+    &.Backspace,
+    &.KeyLang,
+    &.KeyNum {
+      width: 110.44px;
+    }
+
+    &.Space {
+      width: 552.18px;
+    }
+  }
+}
