@@ -77,7 +77,10 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
       {!('image' in question) ? (
         <Container className={`${styles.container} ${styles.question} ${styles.multiple}`}>
           <span className={styles.badge}>{currentTour + 1} тур</span>
-          {currentTour != 2 && <p>ВОПРОС {`${currentQuestion + 1} / ${questionsCount}`}</p>}
+          {currentTour === 4 && <p>Оснасти корабля капитана Чирикова</p>}
+          {currentTour != 2 && currentTour != 4 && (
+            <p>ВОПРОС {`${currentQuestion + 1} / ${questionsCount}`}</p>
+          )}
           <h2>{question.question}</h2>
           {question.type === 'blank' && (
             <>
