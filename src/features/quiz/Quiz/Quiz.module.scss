@@ -99,6 +99,24 @@
     .right {
       flex: 1;
     }
+
+    .left {
+      p {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 60px;
+        text-align: center;
+      }
+    }
+
+    .right {
+      img {
+        height: 43vh;
+      }
+    }
   }
 
   .flag {
@@ -126,6 +144,10 @@
   .actions {
     display: flex;
     gap: 2px;
+  }
+
+  .options {
+    flex-wrap: wrap;
   }
 }
 

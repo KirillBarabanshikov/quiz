@@ -19,7 +19,7 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [showResult, setShowResult] = useState(false);
-  const { currentQuestion, setQuestion, currentTour } = useQuizStore();
+  const { currentQuestion, setQuestion, currentTour, setTour } = useQuizStore();
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -47,14 +47,18 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
     }
 
     if (currentQuestion === questionsCount - 1) {
-      setShowResult(true);
+      if (currentTour === 3) {
+        setTour(currentTour + 1);
+      } else {
+        setShowResult(true);
+      }
     } else {
       setQuestion(currentQuestion + 1);
     }
   }
 
   if (showResult) {
-    if (currentTour === 0) {
+    if (currentTour === 2) {
       return <FlagDescription description={question.description!} />;
     }
     return <TourResult questionsCount={questionsCount} correctAnswers={correctAnswers} />;
@@ -62,24 +66,42 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
 
   return (
     <div className={styles.wrapper}>
-      <Container className={`${styles.container} ${styles.question}`}>
-        <span className={styles.badge}>{currentTour + 1} тур</span>
-        {currentTour != 2 && <p>ВОПРОС {`${currentQuestion + 1} / ${questionsCount}`}</p>}
-        <h2>{question.question}</h2>
-        {question.type === 'blank' && (
-          <>
-            <Input
-              ref={ref}
-              placeholder={'Введите ответ'}
-              className={styles.input}
-              validate={isValid}
-            />
-            <Keyboard inputRef={ref} onEnter={onEnter} />
-          </>
-        )}
-      </Container>
+      {!question.image && (
+        <Container className={`${styles.container} ${styles.question}`}>
+          <span className={styles.badge}>{currentTour + 1} тур</span>
+          {currentTour != 2 && <p>ВОПРОС {`${currentQuestion + 1} / ${questionsCount}`}</p>}
+          <h2>{question.question}</h2>
+          {question.type === 'blank' && (
+            <>
+              <Input
+                ref={ref}
+                placeholder={'Введите ответ'}
+                className={styles.input}
+                validate={isValid}
+              />
+              <Keyboard inputRef={ref} onEnter={onEnter} />
+            </>
+          )}
+        </Container>
+      )}
+      {question.image && (
+        <div className={styles.row}>
+          <Container className={`${styles.container} ${styles.left}`}>
+            <span className={styles.badge}>{currentTour + 1} тур</span>
+            <p>Собери Розу Ветров</p>
+            <h2>{question.question}</h2>
+          </Container>
+          <Container theme={'white'} className={styles.right}>
+            <img src={question.image} />
+          </Container>
+        </div>
+      )}
       {question.options && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.actions}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className={`${styles.actions} ${styles.options}`}
+        >
           {question.options.map((option, index) => (
             <OptionButton
               key={option}
