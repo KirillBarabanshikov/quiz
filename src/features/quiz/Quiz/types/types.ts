@@ -14,7 +14,7 @@ export interface IQuestion {
 
 export type QuestionType = 'single' | 'multiple' | 'blank' | 'constructor' | 'single-image';
 
-interface IDescription {
+export interface IDescription {
   title: string;
   description: string;
   image?: string;

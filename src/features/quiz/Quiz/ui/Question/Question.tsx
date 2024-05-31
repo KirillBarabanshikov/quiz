@@ -6,6 +6,7 @@ import { OptionButton } from '@/features/quiz/Quiz/ui/OptionButton/OptionButton.
 import styles from '../../Quiz.module.scss';
 import { FinishTrgger, TourResult } from '@/features/quiz/Quiz/ui';
 import { motion } from 'framer-motion';
+import { FlagDescription } from './ui';
 
 interface IQuestion {
   question: InterfaceQuestion;
@@ -17,6 +18,7 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [showResult, setShowResult] = useState(false);
   const { currentQuestion, setQuestion, currentTour } = useQuizStore();
   const ref = useRef<HTMLInputElement>(null);
 
@@ -44,10 +46,17 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
       return setShowModal(true);
     }
 
-    setQuestion(currentQuestion + 1);
+    if (currentQuestion === questionsCount - 1) {
+      setShowResult(true);
+    } else {
+      setQuestion(currentQuestion + 1);
+    }
   }
 
-  if (currentQuestion > questionsCount - 1) {
+  if (showResult) {
+    if (currentTour === 0) {
+      return <FlagDescription description={question.description!} />;
+    }
     return <TourResult questionsCount={questionsCount} correctAnswers={correctAnswers} />;
   }
 

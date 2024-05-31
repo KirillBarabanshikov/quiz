@@ -90,6 +90,39 @@
     }
   }
 
+  .row {
+    display: flex;
+    gap: 2px;
+    flex: 1;
+
+    .left,
+    .right {
+      flex: 1;
+    }
+  }
+
+  .flag {
+    .flag_img {
+      img {
+        height: 67vh;
+      }
+    }
+
+    .right {
+      h3 {
+        font-size: 60px;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 110%;
+        text-align: center;
+        max-width: 750px;
+      }
+    }
+  }
+
   .actions {
     display: flex;
     gap: 2px;
