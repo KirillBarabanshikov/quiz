@@ -6,7 +6,7 @@ import { OptionButton } from '@/features/quiz/Quiz/ui/OptionButton/OptionButton.
 import styles from '../../Quiz.module.scss';
 import { FinishTrgger, TourResult } from '@/features/quiz/Quiz/ui';
 import { motion } from 'framer-motion';
-import { FlagDescription } from './ui';
+import { ExamplesEquipment, FlagDescription } from './ui';
 
 interface IQuestion {
   question: InterfaceQuestion;
@@ -61,13 +61,20 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
     if (currentTour === 2) {
       return <FlagDescription description={question.description!} />;
     }
+
+    if (currentTour === 4) {
+      return <ExamplesEquipment />;
+    }
+
     return <TourResult questionsCount={questionsCount} correctAnswers={correctAnswers} />;
   }
 
+  if (!question) return <></>;
+
   return (
     <div className={styles.wrapper}>
-      {!question.image && (
-        <Container className={`${styles.container} ${styles.question}`}>
+      {!('image' in question) ? (
+        <Container className={`${styles.container} ${styles.question} ${styles.multiple}`}>
           <span className={styles.badge}>{currentTour + 1} тур</span>
           {currentTour != 2 && <p>ВОПРОС {`${currentQuestion + 1} / ${questionsCount}`}</p>}
           <h2>{question.question}</h2>
@@ -83,8 +90,7 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
             </>
           )}
         </Container>
-      )}
-      {question.image && (
+      ) : (
         <div className={styles.row}>
           <Container className={`${styles.container} ${styles.left}`}>
             <span className={styles.badge}>{currentTour + 1} тур</span>
@@ -102,23 +108,45 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
           animate={{ opacity: 1 }}
           className={`${styles.actions} ${styles.options}`}
         >
-          {question.options.map((option, index) => (
-            <OptionButton
-              key={option}
-              type={question.type}
-              variant={
-                selectedOptions.includes(option)
-                  ? question.answer.includes(option)
-                    ? 'success'
-                    : 'error'
-                  : 'default'
-              }
-              disabled={!!selectedOptions.length}
-              option={option}
-              number={index + 1}
-              onClick={() => onSelect(option)}
-            />
-          ))}
+          {question.options.slice(0, 18).map((option, index) => {
+            if (question.type === 'multiple') {
+              return (
+                <OptionButton
+                  key={index}
+                  option={option}
+                  number={index + 1}
+                  type={question.type}
+                  variant={
+                    selectedOptions.includes(option)
+                      ? question.answer.includes(option)
+                        ? 'success'
+                        : 'error'
+                      : 'default'
+                  }
+                  className={styles.option}
+                  onClick={() => onSelect(option)}
+                />
+              );
+            }
+
+            return (
+              <OptionButton
+                key={option}
+                type={question.type}
+                variant={
+                  selectedOptions.includes(option)
+                    ? question.answer.includes(option)
+                      ? 'success'
+                      : 'error'
+                    : 'default'
+                }
+                disabled={!!selectedOptions.length}
+                option={option}
+                number={index + 1}
+                onClick={() => onSelect(option)}
+              />
+            );
+          })}
         </motion.div>
       )}
       <div className={styles.actions}>
@@ -139,7 +167,18 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
       >
         <h3>{question.description?.title}</h3>
         <p>{question.description?.description}</p>
-        <Button text={'Закрыть'} size={'medium'} onClick={() => setQuestion(currentQuestion + 1)} />
+        <Button
+          text={'Закрыть'}
+          size={'medium'}
+          onClick={() => {
+            setShowModal(false);
+            if (currentQuestion >= questionsCount - 1) {
+              setTour(currentTour + 1);
+            } else {
+              setQuestion(currentQuestion + 1);
+            }
+          }}
+        />
       </Modal>
     </div>
   );

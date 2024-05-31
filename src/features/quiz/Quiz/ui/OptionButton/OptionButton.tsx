@@ -9,6 +9,7 @@ interface IOptionButton {
   onClick?: () => void;
   disabled?: boolean;
   type: QuestionType;
+  className?: string;
 }
 
 export const OptionButton: FC<IOptionButton> = ({
@@ -18,6 +19,7 @@ export const OptionButton: FC<IOptionButton> = ({
   onClick,
   disabled = false,
   type,
+  className = '',
 }) => {
   if (type === 'single-image') {
     return (
@@ -33,7 +35,9 @@ export const OptionButton: FC<IOptionButton> = ({
   }
 
   return (
-    <div className={`${styles.wrap} ${styles[variant]} ${disabled ? styles.disabled : ''}`}>
+    <div
+      className={`${styles.wrap} ${styles[variant]} ${disabled ? styles.disabled : ''} ${className}`}
+    >
       <span>{number}</span>
       <button onClick={onClick} className={`${styles.button}`} disabled={disabled}>
         {option}
