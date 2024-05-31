@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Button, Container } from '@/shared/ui';
 import { useQuizStore } from '@/features/quiz';
 import styles from '../../Quiz.module.scss';
-import { FinishTrgger } from '@/features/quiz/Quiz/ui';
+import { FinishTrigger } from '@/features/quiz/Quiz/ui';
 
 interface ITourPreview {
   name: string;
@@ -19,7 +19,7 @@ export const TourPreview: FC<ITourPreview> = ({ name, onStart }) => {
         <h2>{name}</h2>
       </Container>
       <div className={styles.actions}>
-        <FinishTrgger />
+        <FinishTrigger />
         <Button text={'Начать'} onClick={onStart} />
       </div>
     </div>

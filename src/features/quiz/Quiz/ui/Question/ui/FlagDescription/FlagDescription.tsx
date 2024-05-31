@@ -1,4 +1,4 @@
-import { FinishTrgger } from '@/features/quiz/Quiz/ui';
+import { FinishTrigger } from '@/features/quiz/Quiz/ui';
 import { Button, Container } from '@/shared/ui';
 import { IDescription } from '@/features/quiz/Quiz/types/types.ts';
 import { FC } from 'react';
@@ -26,7 +26,7 @@ export const FlagDescription: FC<IFlagDescription> = ({ description }) => {
         </Container>
       </div>
       <div className={styles.actions}>
-        <FinishTrgger />
+        <FinishTrigger />
         <Button text={'Далее'} onClick={() => setTour(currentTour + 1)} />
       </div>
     </div>

@@ -4,7 +4,7 @@ import { Button, Container, Input, Keyboard, Modal } from '@/shared/ui';
 import { useQuizStore } from '@/features/quiz/Quiz/store/store.ts';
 import { OptionButton } from '@/features/quiz/Quiz/ui/OptionButton/OptionButton.tsx';
 import styles from '../../Quiz.module.scss';
-import { FinishTrgger, TourResult } from '@/features/quiz/Quiz/ui';
+import { FinishTrigger, TourResult } from '@/features/quiz/Quiz/ui';
 import { motion } from 'framer-motion';
 import { ExamplesEquipment, FlagDescription } from './ui';
 
@@ -119,7 +119,7 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
 
               return (
                 <OptionButton
-                  key={index}
+                  key={option}
                   option={option}
                   number={index + 1}
                   type={question.type}
@@ -159,7 +159,7 @@ export const Question: FC<IQuestion> = ({ question, questionsCount }) => {
         </motion.div>
       )}
       <div className={styles.actions}>
-        <FinishTrgger />
+        <FinishTrigger />
         <Button
           text={'Далее'}
           onClick={onNext}

@@ -143,6 +143,12 @@
       transition: opacity 0.25s;
     }
 
+    &.disabled {
+      &:hover {
+        cursor: initial;
+      }
+    }
+
     &.disabled.default {
       &:after {
         opacity: 0.4;

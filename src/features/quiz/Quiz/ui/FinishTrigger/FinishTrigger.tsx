@@ -4,7 +4,7 @@ import { useQuizStore } from '@/features/quiz';
 import arrow from '@/shared/assets/images/growthArrow.png';
 import styles from './FinishTrigger.module.scss';
 
-export const FinishTrgger = () => {
+export const FinishTrigger = () => {
   const [showModal, setShowModal] = useState(false);
   const { currentTour, currentQuestion, finish } = useQuizStore();
 
