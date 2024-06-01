@@ -1,2 +1,2 @@
-export { StartQuiz } from './StartQuiz/StartQuiz.tsx';
-export { Quiz, useQuizStore } from './Quiz';
+export { useQuizStore } from './store/store.ts';
+export { Quiz } from './ui';

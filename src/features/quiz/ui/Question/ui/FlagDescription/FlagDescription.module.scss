@@ -1,0 +1,43 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  .body {
+    display: flex;
+    gap: 2px;
+    flex: 1;
+
+    .left,
+    .right {
+      flex: 1;
+    }
+
+    .left {
+      img {
+        height: 67vh;
+      }
+    }
+
+    .right {
+      h2 {
+        font-size: 60px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 110%;
+        text-align: center;
+        max-width: 750px;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 2px;
+  }
+}

@@ -1,1 +1,1 @@
-export { QuizArea } from './QuizArea/QuizArea.tsx';
+export { QuizArea } from './QuizArea';

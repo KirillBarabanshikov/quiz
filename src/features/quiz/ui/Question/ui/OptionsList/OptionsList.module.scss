@@ -1,0 +1,17 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+
+  .option {
+    flex: 1 0 21%;
+
+    &.six {
+      flex: 1 0 15%;
+    }
+
+    &.five {
+      flex: 1 0 19%;
+    }
+  }
+}

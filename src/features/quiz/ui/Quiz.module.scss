@@ -1,0 +1,110 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 100%;
+
+  .row {
+    display: flex;
+    flex: 1;
+    gap: 2px;
+
+    .left,
+    .right {
+      flex: 1;
+    }
+  }
+
+  .container {
+    height: 100%;
+    position: relative;
+
+    .badge {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      font-size: 24px;
+      color: #0d003b;
+      background: #ffffff;
+      padding: 15px 36px;
+      border-radius: 100px;
+    }
+
+    .input {
+      margin-top: 30px;
+    }
+
+    &.preview {
+      background-image: url('@/shared/assets/images/map.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+
+      p {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 100px;
+      }
+    }
+
+    &.question {
+      p {
+        font-size: 20px;
+        line-height: 110%;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 80px;
+
+        &.less {
+          font-size: 60px;
+        }
+      }
+    }
+
+    &.result {
+      .image {
+        width: 400px;
+        height: 400px;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        font-size: 80px;
+      }
+
+      p {
+        font-size: 20px;
+        line-height: 110%;
+      }
+    }
+
+    p {
+      color: #5c59fd;
+
+      &.subtitle {
+        font-size: 24px;
+      }
+    }
+
+    h2 {
+      color: #0d003b;
+      text-align: center;
+      white-space: pre;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 2px;
+  }
+}
+
+.modal {
+  width: 818px;
+}
