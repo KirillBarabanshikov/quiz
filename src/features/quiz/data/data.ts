@@ -11,6 +11,7 @@ import east from '@/shared/assets/images/east.png';
 import northWest from '@/shared/assets/images/north-west.png';
 import south from '@/shared/assets/images/south.png';
 import southWest from '@/shared/assets/images/south-west.png';
+import officers from '@/shared/assets/images/officers.png';
 
 export const tours: ITour[] = [
   {
@@ -456,6 +457,48 @@ export const tours: ITour[] = [
           description:
             'Механики на корабле отвечают за исправность ходовой части-двигателей корабля.',
         },
+      },
+    ],
+  },
+  {
+    name: 'Выборка по картинке',
+    subtitle: 'Снаряди капитана Чирикова',
+    questions: [
+      {
+        question:
+          'Выберите атрибуты\nкостюма морского офицера\nпервой половины 18 века\nдля капитана Чирикова',
+        image: officers,
+        options: [
+          'Парик',
+          'Штаны',
+          'Панталоны',
+          'Шляпа',
+          'Ботфорты',
+          'Кафтан',
+          'Сюртук',
+          'Шаровары',
+          'Жабо',
+          'Зонтик',
+        ],
+        answers: ['Парик', 'Штаны', 'Шляпа', 'Кафтан'],
+      },
+      {
+        question:
+          'Выберите атрибуты\nкостюма морского офицера\nпервой половины 18 века\nдля капитана Чирикова',
+        image: officers,
+        options: [
+          'Шпага',
+          'Поясная портупея',
+          'Шейный платок',
+          'Камзол',
+          'Штиблеты',
+          'Колготы',
+          'Блузка',
+          'Брюки',
+          'Портянки',
+          'Бутсы',
+        ],
+        answers: ['Шпага', 'Поясная портупея', 'Шейный платок', 'Камзол', 'Штиблеты'],
       },
     ],
   },

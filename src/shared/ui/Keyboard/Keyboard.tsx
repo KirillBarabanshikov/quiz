@@ -60,9 +60,9 @@ export const Keyboard: FC<IKeyboard> = ({ inputRef, onEnter }) => {
     <AnimatePresence>
       {showKeyboard && (
         <motion.div
-          initial={{ opacity: 0, y: '50%' }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: '50%' }}
+          initial={{ opacity: 0, y: '50%', pointerEvents: 'none' }}
+          animate={{ opacity: 1, y: 0, pointerEvents: 'initial' }}
+          exit={{ opacity: 0, y: '50%', pointerEvents: 'none' }}
           className={styles.keyboard}
           onClick={(e) => onChange(e)}
           onMouseDown={(e) => e.preventDefault()}

@@ -28,7 +28,13 @@ export const Question: FC<IQuestion> = ({ question, questionsNumber, subtitle })
 
   function onNext() {
     if (currentTour === 5) return setShowModal(true);
-    if (currentTour === 3 && currentQuestion === 7) return nextTour();
+    if (
+      (currentTour === 3 && currentQuestion === 7) ||
+      (currentTour === 6 && currentQuestion === 1)
+    ) {
+      return nextTour();
+    }
+
     setQuestion(currentQuestion + 1);
   }
 

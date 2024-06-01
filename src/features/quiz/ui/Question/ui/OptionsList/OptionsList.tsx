@@ -35,7 +35,7 @@ export const OptionsList: FC<IOptionsList> = ({ options, answers, onSelect }) =>
 
   const currentStyle = (index: number) => {
     if (currentTour === 4 && (currentQuestion === 0 || currentQuestion === 1)) return styles.six;
-    if (currentTour === 4 && index < 5) return styles.five;
+    if ((currentTour === 4 && index < 5) || currentTour === 6) return styles.five;
     if (currentTour === 4) return styles.four;
   };
 
