@@ -3,3 +3,4 @@ export { Tour } from './Tour';
 export { Result } from './Result';
 export { Question, FlagDescription, ExamplesEquipment } from './Question';
 export { FinishButton } from './FinishButton';
+export { Constructor } from './Constructor';

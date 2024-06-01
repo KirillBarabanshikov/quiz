@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { ITour as InterfaceTour } from '../../types/types.ts';
 import { Preview } from './ui';
-import { ExamplesEquipment, FlagDescription, Question, Result } from '../index.ts';
+import { Constructor, ExamplesEquipment, FlagDescription, Question, Result } from '../index.ts';
 import { useQuizStore } from '@/features/quiz';
 
 interface ITour {
@@ -22,6 +22,7 @@ export const Tour: FC<ITour> = ({ tour }) => {
   }
 
   if (isStartedTour) {
+    if (currentTour === 7) return <Constructor tour={tour} />;
     return (
       <Question
         question={tour.questions[currentQuestion]}
