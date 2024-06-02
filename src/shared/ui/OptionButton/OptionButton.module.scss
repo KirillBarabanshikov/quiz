@@ -65,6 +65,15 @@
     }
   }
 
+  &.success,
+  &.error {
+    button {
+      &:hover {
+        cursor: initial;
+      }
+    }
+  }
+
   &.success {
     .button {
       background: #44be72;
