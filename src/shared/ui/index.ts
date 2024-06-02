@@ -5,3 +5,4 @@ export { Modal } from './Modal';
 export { Input } from './Input';
 export { Keyboard } from './Keyboard';
 export { OptionButton } from './OptionButton';
+export { Select } from './Select';
