@@ -1,6 +1,7 @@
 .wrap {
   position: relative;
   user-select: none;
+  min-width: 203px;
 
   .text {
     font-size: 16px;
@@ -37,6 +38,50 @@
       gap: 8px;
       padding: 4px 8px;
       margin: 0 10px;
+      transition: outline-color 0.25s;
+
+      &.success,
+      &.error {
+        outline-offset: -1px;
+        border-radius: 8px;
+
+        .radio {
+          background: transparent;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      &.success {
+        outline: 1px solid #44be72;
+
+        .radio {
+          outline: 1px solid #44be72;
+
+          span {
+            background-color: #44be72;
+          }
+        }
+      }
+
+      &.error {
+        outline: 1px solid #e3605f;
+
+        .radio {
+          outline: 1px solid #e3605f;
+
+          span {
+            background-color: #e3605f;
+          }
+        }
+      }
 
       &:first-child {
         margin-top: 10px;
@@ -57,6 +102,11 @@
         outline: 1px solid #d0d5dd;
         outline-offset: -1px;
         border-radius: 100%;
+        transition: outline-color 0.25s;
+
+        span {
+          transition: background-color 0.25s;
+        }
       }
     }
   }

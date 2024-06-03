@@ -1,14 +1,17 @@
 import { FC, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { clsx } from 'clsx';
 import Chevron from '@/shared/assets/icons/chevron.svg?react';
 import styles from './Select.module.scss';
 
 interface ISelect {
   placeholder: string;
-  options: { value: string; title: string }[];
+  options: { value: number; title: string; state?: 'error' | 'success' }[];
+  onSelect: (value: number) => void;
+  disabled?: boolean;
 }
 
-export const Select: FC<ISelect> = ({ placeholder, options }) => {
+export const Select: FC<ISelect> = ({ placeholder, options, onSelect, disabled = false }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -49,9 +52,15 @@ export const Select: FC<ISelect> = ({ placeholder, options }) => {
             key={'options'}
             className={styles.options}
           >
-            {options.map(({ value, title }) => (
-              <div key={value} className={styles.option}>
-                <div className={styles.radio}></div>
+            {options.map(({ value, title, state }) => (
+              <div
+                key={value}
+                onClick={disabled ? undefined : () => onSelect(value)}
+                className={clsx(styles.option, state && styles[state])}
+              >
+                <div className={styles.radio}>
+                  <span></span>
+                </div>
                 <span className={styles.text}>{title}</span>
               </div>
             ))}
