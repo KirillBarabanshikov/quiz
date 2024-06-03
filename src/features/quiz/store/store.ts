@@ -42,8 +42,6 @@ export const useQuizStore = create<IQuizState>((set) => ({
         ? [...updatedCorrectAnswers[state.currentTour], answer]
         : [answer];
 
-      console.log(updatedCorrectAnswers);
-
       return { correctAnswers: updatedCorrectAnswers };
     }),
   start: () => set(() => ({ isStarted: true })),
