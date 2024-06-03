@@ -13,6 +13,12 @@
     .right {
       flex: 1;
     }
+
+    .right {
+      img {
+        max-height: 44vh;
+      }
+    }
   }
 
   .container {
