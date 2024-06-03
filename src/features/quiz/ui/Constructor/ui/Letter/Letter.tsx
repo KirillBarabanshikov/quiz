@@ -26,7 +26,7 @@ const fragments = [
 ];
 
 export const Letter = () => {
-  const { currentTour, nextTour } = useQuizStore();
+  const { currentTour, nextTour, incCorrectAnswers } = useQuizStore();
   const [currentFragment, setCurrentFragment] = useState(0);
   const [selectedOrder, setSelectedOrder] = useState(Array(fragments.length).fill(null));
 
@@ -34,6 +34,13 @@ export const Letter = () => {
     const newOrder = [...selectedOrder];
     newOrder[currentFragment] = value;
     setSelectedOrder(newOrder);
+  }
+
+  function onNext() {
+    if (fragments.every(({ correctOrder }, index) => correctOrder === selectedOrder[index])) {
+      incCorrectAnswers();
+    }
+    nextTour();
   }
 
   return (
@@ -80,7 +87,7 @@ export const Letter = () => {
       </Container>
       <div className={styles.actions}>
         <FinishButton />
-        <Button text={'Далее'} disabled={selectedOrder.includes(null)} onClick={nextTour} />
+        <Button text={'Далее'} disabled={selectedOrder.includes(null)} onClick={onNext} />
       </div>
     </div>
   );

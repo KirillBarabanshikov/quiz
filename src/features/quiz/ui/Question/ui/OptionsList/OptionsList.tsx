@@ -12,7 +12,7 @@ interface IOptionsList {
 }
 
 export const OptionsList: FC<IOptionsList> = ({ options, answers, onSelect }) => {
-  const { setCorrectAnswers, currentTour, currentQuestion } = useQuizStore();
+  const { incCorrectAnswers, currentTour, currentQuestion } = useQuizStore();
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const OptionsList: FC<IOptionsList> = ({ options, answers, onSelect }) =>
   function onClick(option: string) {
     if (!selectedOptions.includes(option)) {
       setSelectedOptions((prevState) => [...prevState, option]);
-      if (answers.includes(option)) setCorrectAnswers(option);
+      if (answers.includes(option)) incCorrectAnswers();
       onSelect();
     }
   }

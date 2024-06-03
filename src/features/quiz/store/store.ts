@@ -5,11 +5,11 @@ interface IQuizState {
   isStartedTour: boolean;
   currentTour: number;
   currentQuestion: number;
-  correctAnswers: string[][];
+  correctAnswers: number[];
   startTour: () => void;
   nextTour: () => void;
   setQuestion: (question: number) => void;
-  setCorrectAnswers: (answer: string) => void;
+  incCorrectAnswers: () => void;
   start: () => void;
   finish: () => void;
 }
@@ -28,19 +28,21 @@ export const useQuizStore = create<IQuizState>((set) => ({
       isStartedTour: false,
     })),
   setQuestion: (question: number) => set(() => ({ currentQuestion: question })),
-  setCorrectAnswers: (answer: string) =>
+  incCorrectAnswers: () =>
     set((state) => {
       const updatedCorrectAnswers =
         state.correctAnswers.length > state.currentTour
           ? state.correctAnswers
           : [
               ...state.correctAnswers,
-              ...Array(state.currentTour - state.correctAnswers.length + 1).fill([]),
+              ...Array(state.currentTour - state.correctAnswers.length + 1).fill(0),
             ];
 
-      updatedCorrectAnswers[state.currentTour] = updatedCorrectAnswers[state.currentTour]
-        ? [...updatedCorrectAnswers[state.currentTour], answer]
-        : [answer];
+      if (state.currentTour === 4 || state.currentTour === 6) {
+        return { correctAnswers: updatedCorrectAnswers };
+      }
+
+      updatedCorrectAnswers[state.currentTour] += 1;
 
       return { correctAnswers: updatedCorrectAnswers };
     }),

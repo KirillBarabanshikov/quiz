@@ -14,7 +14,7 @@ interface IQuestion {
 }
 
 export const Question: FC<IQuestion> = ({ question, questionsNumber, subtitle }) => {
-  const { setQuestion, currentQuestion, currentTour, nextTour } = useQuizStore();
+  const { setQuestion, currentQuestion, currentTour, nextTour, incCorrectAnswers } = useQuizStore();
   const [isDisabled, setIsDisabled] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [validate, setValidate] = useState<boolean | null>(null);
@@ -53,11 +53,11 @@ export const Question: FC<IQuestion> = ({ question, questionsNumber, subtitle })
 
   function onEnter() {
     if (!inputRef?.current?.value) return;
-    setValidate(
-      question.answers
-        .map((item) => item.toLowerCase())
-        .includes(inputRef.current.value.toLowerCase()),
-    );
+    const validate = question.answers
+      .map((item) => item.toLowerCase())
+      .includes(inputRef.current.value.trim().toLowerCase());
+    if (validate) incCorrectAnswers();
+    setValidate(validate);
     setIsDisabled(false);
   }
 

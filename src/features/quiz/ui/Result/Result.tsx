@@ -16,9 +16,14 @@ const results = [
 ];
 
 const computeResult = (answersNumber: number, questionsNumber: number) => {
-  if (answersNumber <= questionsNumber - 7) return 2;
-  if (answersNumber <= questionsNumber - 2) return 1;
-  return 0;
+  const incorrectAnswers = questionsNumber - answersNumber;
+  if (incorrectAnswers > 6) {
+    return 2;
+  } else if (incorrectAnswers > 1) {
+    return 1;
+  } else {
+    return 0;
+  }
 };
 
 interface IResult {
@@ -29,8 +34,7 @@ interface IResult {
 export const Result: FC<IResult> = ({ isLast = false, questionsNumber }) => {
   const { currentTour, nextTour, correctAnswers } = useQuizStore();
   const answersNumber =
-    correctAnswers[currentTour]?.length ??
-    correctAnswers.reduce((total, currentArray) => total + currentArray.length, 0);
+    correctAnswers[currentTour] ?? correctAnswers.reduce((total, current) => total + current, 0);
   const result = computeResult(answersNumber, questionsNumber);
 
   return (
