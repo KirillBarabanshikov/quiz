@@ -1,8 +1,8 @@
 import React, { FC, RefObject, useEffect, useState } from 'react';
-import { keys } from './data/data.ts';
-import styles from './Keyboard.module.scss';
-import { AnimatePresence, motion } from 'framer-motion';
 import { createPortal } from 'react-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import { keyboard } from './data/data.ts';
+import styles from './Keyboard.module.scss';
 
 interface IKeyboard {
   inputRef: RefObject<HTMLInputElement>;
@@ -11,6 +11,7 @@ interface IKeyboard {
 
 export const Keyboard: FC<IKeyboard> = ({ inputRef, onEnter }) => {
   const [showKeyboard, setShowKeyboard] = useState(false);
+  const [currentLayout, setCurrentLayout] = useState<'rus' | 'en' | 'num'>('rus');
 
   useEffect(() => {
     const handleFocus = () => setShowKeyboard(true);
@@ -37,8 +38,13 @@ export const Keyboard: FC<IKeyboard> = ({ inputRef, onEnter }) => {
 
     switch (code) {
       case 'Backspace':
-        input.value = input.value.slice(0, start > 0 ? start - 1 : start) + input.value.slice(end);
-        input.setSelectionRange(start > 0 ? start - 1 : start, end > 0 ? end - 1 : end);
+        if (start != end) {
+          input.value = input.value.slice(0, start) + input.value.slice(end);
+          input.setSelectionRange(start, start);
+        } else {
+          input.value = input.value.slice(0, start && start - 1) + input.value.slice(end);
+          input.setSelectionRange(start && start - 1, end && end - 1);
+        }
         break;
 
       case 'Enter':
@@ -48,7 +54,7 @@ export const Keyboard: FC<IKeyboard> = ({ inputRef, onEnter }) => {
         return;
 
       case 'KeyNum':
-        return;
+        return setCurrentLayout('num');
 
       default:
         input.value = input.value.slice(0, start) + key + input.value.slice(end);
@@ -67,7 +73,7 @@ export const Keyboard: FC<IKeyboard> = ({ inputRef, onEnter }) => {
           onClick={(e) => onChange(e)}
           onMouseDown={(e) => e.preventDefault()}
         >
-          {keys.map((row, i) => {
+          {keyboard[currentLayout].map((row, i) => {
             return (
               <div key={i} className={styles.row}>
                 {row.map(({ code, key }) => (
