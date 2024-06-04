@@ -37,8 +37,13 @@ export const Keyboard: FC<IKeyboard> = ({ inputRef, onEnter }) => {
 
     switch (code) {
       case 'Backspace':
-        input.value = input.value.slice(0, start > 0 ? start - 1 : start) + input.value.slice(end);
-        input.setSelectionRange(start > 0 ? start - 1 : start, end > 0 ? end - 1 : end);
+        if (start != end) {
+          input.value = input.value.slice(0, start) + input.value.slice(end);
+          input.setSelectionRange(start, start);
+        } else {
+          input.value = input.value.slice(0, start && start - 1) + input.value.slice(end);
+          input.setSelectionRange(start && start - 1, end && end - 1);
+        }
         break;
 
       case 'Enter':
@@ -51,8 +56,13 @@ export const Keyboard: FC<IKeyboard> = ({ inputRef, onEnter }) => {
         return;
 
       default:
-        input.value = input.value.slice(0, start) + key + input.value.slice(end);
-        input.setSelectionRange(start + 1, end + 1);
+        if (start != end) {
+          input.value = input.value.slice(0, start) + key + input.value.slice(end);
+          input.setSelectionRange(end, end);
+        } else {
+          input.value = input.value.slice(0, start) + key + input.value.slice(end);
+          input.setSelectionRange(start + 1, end + 1);
+        }
     }
   }
 
