@@ -51,7 +51,7 @@ export const Keyboard: FC<IKeyboard> = ({ inputRef, onEnter }) => {
         return onEnter();
 
       case 'KeyLang':
-        return;
+        return setCurrentLayout((prevState) => (prevState === 'rus' ? 'en' : 'rus'));
 
       case 'KeyNum':
         return setCurrentLayout('num');
@@ -71,9 +71,9 @@ export const Keyboard: FC<IKeyboard> = ({ inputRef, onEnter }) => {
     <AnimatePresence>
       {showKeyboard && (
         <motion.div
-          initial={{ opacity: 0, y: '50%', pointerEvents: 'none' }}
-          animate={{ opacity: 1, y: 0, pointerEvents: 'initial' }}
-          exit={{ opacity: 0, y: '50%', pointerEvents: 'none' }}
+          initial={{ opacity: 0, y: '50%', x: '-50%', pointerEvents: 'none' }}
+          animate={{ opacity: 1, y: 0, x: '-50%', pointerEvents: 'initial' }}
+          exit={{ opacity: 0, y: '50%', x: '-50%', pointerEvents: 'none' }}
           className={styles.keyboard}
           onClick={(e) => onChange(e)}
           onMouseDown={(e) => e.preventDefault()}
