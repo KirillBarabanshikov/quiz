@@ -31,7 +31,7 @@ export const keys: IKey[][] = [
     { code: 'Enter', key: 'Enter' },
   ],
   [
-    { code: 'KeyNum', key: '&123' },
+    // { code: 'KeyNum', key: '&123' },
     { code: 'KeyZ', key: 'я' },
     { code: 'KeyX', key: 'ч' },
     { code: 'KeyC', key: 'с' },
@@ -42,7 +42,7 @@ export const keys: IKey[][] = [
     { code: 'Comma', key: 'б' },
     { code: 'Period', key: 'ю' },
     { code: 'Backquote', key: 'ё' },
-    { code: 'KeyLang', key: 'RUS' },
+    // { code: 'KeyLang', key: 'RUS' },
   ],
   [{ code: 'Space', key: ' ' }],
 ];
