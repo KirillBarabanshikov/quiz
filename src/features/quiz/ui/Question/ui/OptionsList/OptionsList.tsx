@@ -30,6 +30,7 @@ export const OptionsList: FC<IOptionsList> = ({ options, answers, onSelect }) =>
   const currentNumber = (index: number) => {
     if (currentTour === 4 && currentQuestion === 1) return index + 19;
     if (currentTour === 4 && currentQuestion === 2) return index + 37;
+    if (currentTour === 6 && currentQuestion === 1) return index + 11;
     return index + 1;
   };
 
