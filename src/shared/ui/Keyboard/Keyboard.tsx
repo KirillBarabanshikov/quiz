@@ -58,7 +58,7 @@ export const Keyboard: FC<IKeyboard> = ({ inputRef, onEnter }) => {
       default:
         if (start != end) {
           input.value = input.value.slice(0, start) + key + input.value.slice(end);
-          input.setSelectionRange(end, end);
+          input.setSelectionRange(start + 1, start + 1);
         } else {
           input.value = input.value.slice(0, start) + key + input.value.slice(end);
           input.setSelectionRange(start + 1, end + 1);
